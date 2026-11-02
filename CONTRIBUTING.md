@@ -60,10 +60,10 @@ make fmt
 - `make lint` runs `go vet ./...` and `golangci-lint` over `internal/...` and `public/...`. Install `golangci-lint` v1.57.1 on your `PATH` to match the version pinned in CI. The CI lint job also includes `cmd/...`.
 - `make fmt` rewrites Go files with `gofmt` and `goimports`, then runs `go mod tidy`. It requires `goimports` on your `PATH` (the module currently uses `golang.org/x/tools` v0.16.1). Review the resulting diff and keep unrelated formatting and dependency changes out of your PR.
 
-For example, lint the template examples explicitly with:
+For example, lint a template that uses the components included in this CLI:
 
 ```shell
-go run ./cmd/benthos template lint ./config/template_examples/...
+go run ./cmd/benthos template lint ./config/template_examples/processor_log_message.yaml
 ```
 
 `make deps` runs `go mod tidy`; CI runs it and checks that tracked files remain unchanged before running `make test`. It is a dependency consistency check, not a dependency upgrade command.
